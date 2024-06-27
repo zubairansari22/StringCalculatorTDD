@@ -33,5 +33,21 @@ public class StringCalculatorTest {
         assertEquals(3, StringCalculator.add("//;\n1;2"));
         assertEquals(6, StringCalculator.add("//|\n1|2|3"));
     }
+    @Test(expected = IllegalArgumentException.class)
+    public void testNegativeNumbers() {
+        try {
+            StringCalculator.add("1,-2,3");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negative numbers not allowed: -2", e.getMessage());
+            throw e;
+        }
+        
+        try {
+            StringCalculator.add("1,-2,-3");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negative numbers not allowed: -2,-3", e.getMessage());
+            throw e;
+        }
+    }
 
 }

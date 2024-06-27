@@ -12,10 +12,22 @@ public class StringCalculator {
 	    numbers = numbers.replace("\n", delimiter);
 	    String[] nums = numbers.split(delimiter);
 	    int sum = 0;
+	    StringBuilder negativeNumbers = new StringBuilder();
 	    for (String num : nums) {
-	        sum += Integer.parseInt(num);
+	        int n = Integer.parseInt(num);
+	        if (n < 0) {
+	            if (negativeNumbers.length() > 0) {
+	                negativeNumbers.append(",");
+	            }
+	            negativeNumbers.append(n);
+	        }
+	        sum += n;
+	    }
+	    if (negativeNumbers.length() > 0) {
+	        throw new IllegalArgumentException("Negative numbers not allowed: " + negativeNumbers.toString());
 	    }
 	    return sum;
 	}
+
 
 }
