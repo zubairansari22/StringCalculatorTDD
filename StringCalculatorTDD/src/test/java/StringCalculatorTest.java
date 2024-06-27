@@ -23,4 +23,10 @@ public class StringCalculatorTest {
         assertEquals(6, StringCalculator.add("1,2,3"));
         assertEquals(60, StringCalculator.add("10,20,30"));
     }
+    @Test
+    public void testNewLineDelimiters() {
+        assertEquals(6, StringCalculator.add("1\n2,3"));
+        assertEquals(15, StringCalculator.add("4\n5\n6"));
+    }
+
 }
